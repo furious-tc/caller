@@ -1,0 +1,2 @@
+token = '5247713137:AAFXzw08tY-vW8G8qMf1WtcjPgNGIET_2iM'
+creator = 1389336507

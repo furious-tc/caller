@@ -19,9 +19,9 @@ dp.middleware.setup(LoggingMiddleware())
 
 try:
     conn = sqlite3.connect('db.sqlite3')
-    print('[INFO] База данных подключена!'.encode('cp1252'))
+    print('[INFO] [INFO] Database created!')
 except:
-    print('[INFO] Ошибка подключения'.encode('cp1252'))
+    print('[INFO] Connection lost')
     sys.exit()
 
 cursor = conn.cursor()

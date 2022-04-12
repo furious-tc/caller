@@ -2,9 +2,9 @@ import sqlite3
 
 try:
     conn = sqlite3.connect('db.sqlite3')
-    print('[INFO] База данных создана!')
+    print('[INFO] База данных создана!'.encode('cp1252'))
 except:
-    print('[INFO] Ошибка подключения')
+    print('[INFO] Ошибка подключения'.encode('cp1252'))
 
 cursor = conn.cursor()
 

@@ -19,9 +19,9 @@ dp.middleware.setup(LoggingMiddleware())
 
 try:
     conn = sqlite3.connect('db.sqlite3')
-    print('[INFO] База данных подключена!')
+    print('[INFO] База данных подключена!'.encode('cp1252'))
 except:
-    print('[INFO] Ошибка подключения')
+    print('[INFO] Ошибка подключения'.encode('cp1252'))
     sys.exit()
 
 cursor = conn.cursor()
@@ -50,7 +50,6 @@ async def start_command_handler(msg: types.Message):
 
 @dp.message_handler(content_types=['text'])
 async def message(msg: types.Message):
-    print(msg.text)
     data = cursor.execute(f"SELECT * FROM admins WHERE admin_id = {msg.from_user.id};")
     user_data = data.fetchone()
     if msg.text == 'Получить код':
@@ -107,7 +106,6 @@ async def message(msg: types.Message, state: FSMContext):
                         admins = cursor.execute(f"SELECT admin_id FROM admins;")
                         admins = admins.fetchall()
                         for admin in admins:
-                            print(int(admin[0]))
                             await bot.send_message(admin[0], f'Новый запрос кода, номер {msg.text}\n\nДля ответа нажмите "Отправить код" и введите \n`{request_number}` код', parse_mode='Markdown')
                         await bot.send_message(-1001796413126, f'Новый запрос кода, номер {msg.text}\n\nДля ответа нажмите "Отправить код" и введите \n`{request_number}` код', parse_mode='Markdown')
 
